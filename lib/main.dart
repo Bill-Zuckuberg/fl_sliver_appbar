@@ -46,7 +46,6 @@ class _SliverAppBaExambleState extends State<SliverAppBaExamble> {
               title: Text(widget.title),
               background: Container(
                 color: Colors.green,
-                height: 160.0,
               ),
             ),
           ),
@@ -78,6 +77,7 @@ class _SliverAppBaExambleState extends State<SliverAppBaExamble> {
             onChanged: (bool val) {
               setState(() {
                 _snap = val;
+                _floating = _floating || val;
               });
             }),
         const Text('Float'),
@@ -86,6 +86,11 @@ class _SliverAppBaExambleState extends State<SliverAppBaExamble> {
             onChanged: (bool val) {
               setState(() {
                 _floating = val;
+                if (_snap == true) {
+                  if (_floating != true) {
+                    _snap = false;
+                  }
+                }
               });
             })
       ],
